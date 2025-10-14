@@ -1,14 +1,16 @@
 ---
 import type { HTMLTag, Polymorphic } from "astro/types";
 
+type CSSProperties = astroHTML.JSX.CSSProperties;
+
 type Props<Tag extends HTMLTag> = Polymorphic<{
   as: Tag;
-  style?: astroHTML.JSX.CSSProperties;
-  direction?: astroHTML.JSX.CSSProperties["flex-direction"];
-  align?: astroHTML.JSX.CSSProperties["align-items"];
-  justify?: astroHTML.JSX.CSSProperties["justify-content"];
-  wrap?: astroHTML.JSX.CSSProperties["flex-wrap"];
-  gap?: astroHTML.JSX.CSSProperties["gap"];
+  style?: CSSProperties;
+  direction?: CSSProperties["flex-direction"];
+  align?: CSSProperties["align-items"];
+  justify?: CSSProperties["justify-content"];
+  wrap?: CSSProperties["flex-wrap"];
+  gap?: CSSProperties["gap"];
   flex?: string | number;
 }>;
 
