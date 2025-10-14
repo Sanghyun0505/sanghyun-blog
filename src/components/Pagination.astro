@@ -1,6 +1,7 @@
 ---
 import NextIcon from "@assets/icons/NextIcon.astro";
 import PrevIcon from "@assets/icons/PrevIcon.astro";
+import Flex from "./Flex.astro";
 
 interface Props {
   length: number;
@@ -15,7 +16,7 @@ const paginationList = Array.from({ length: length }, (_, i) => i + 1);
 ---
 
 <nav class="mt-12">
-  <ol class="flex justify-center gap-3 text-xs font-medium">
+  <Flex as="ol" gap="12px" justify="center" class="text-xs font-medium">
     {
       prevUrl && (
         <li>
@@ -54,5 +55,5 @@ const paginationList = Array.from({ length: length }, (_, i) => i + 1);
         </li>
       )
     }
-  </ol>
+  </Flex>
 </nav>

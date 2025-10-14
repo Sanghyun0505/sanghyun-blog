@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import FormattedDate from "./FormattedDate.astro";
 import { addHypensToSlug } from "@utils/slug";
+import Flex from "./Flex.astro";
 
 export interface PostProps {
   id: string;
@@ -22,7 +23,7 @@ export interface PostProps {
 const { slug, data } = Astro.props as PostProps;
 ---
 
-<article class="flex w-full flex-col items-start">
+<Flex as="article" align="flex-start" direction="column" class="w-full">
   <div class="mb-8 block overflow-hidden rounded-lg">
     <a href={`/blog/${slug}`}>
       <figure class="h-quto w-auto object-cover md:h-[150px]">
@@ -39,7 +40,7 @@ const { slug, data } = Astro.props as PostProps;
     </a>
   </div>
 
-  <div class="flex items-center gap-x-4 text-xs text-zinc-900 dark:text-white">
+  <Flex align="center" gap="16px" class="text-xs text-zinc-900 dark:text-white">
     <FormattedDate date={data.pubDate} />
     {
       data.categories.slice(0, 2).map((item) => (
@@ -51,7 +52,7 @@ const { slug, data } = Astro.props as PostProps;
         </a>
       ))
     }
-  </div>
+  </Flex>
 
   <div>
     <h2
@@ -76,4 +77,4 @@ const { slug, data } = Astro.props as PostProps;
       ))
     }
   </div>
-</article>
+</Flex>

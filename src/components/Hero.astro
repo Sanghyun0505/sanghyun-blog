@@ -2,11 +2,12 @@
 import config from "@config/config.json";
 import social from "@config/social";
 import { Image } from "astro:assets";
+import Flex from "./Flex.astro";
 ---
 
 <article class="bg-zinc-50 dark:bg-zinc-900">
   <div class="mx-auto max-w-screen-lg px-4 py-0 pb-6 sm:px-6 sm:pb-12 lg:px-8">
-    <div class="flex items-start justify-between">
+    <Flex align="flex-start" justify="space-between">
       <div class="w-3/5">
         {
           config.author.bio.map((item) => (
@@ -16,7 +17,7 @@ import { Image } from "astro:assets";
           ))
         }
 
-        <div class="m-auto flex space-x-5 pt-8">
+        <Flex class="m-auto space-x-5 pt-8">
           {
             social.networks.map((item) => (
               <a href={item.url} target="_blank" rel="noopener noreferrer">
@@ -31,7 +32,7 @@ import { Image } from "astro:assets";
             alt="Hits"
             src="https://hits.sh/hekirekiissen.github.io.svg?view=today-total&color=9f9f9f"
           />
-        </div>
+        </Flex>
       </div>
 
       <figure>
@@ -45,6 +46,6 @@ import { Image } from "astro:assets";
           loading="lazy"
         />
       </figure>
-    </div>
+    </Flex>
   </div>
 </article>

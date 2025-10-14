@@ -1,5 +1,6 @@
 ---
 import CategoryIcon from "@assets/icons/CategoryIcon.astro";
+import Flex from "@components/Flex.astro";
 import Base from "@layouts/Base.astro";
 import { getTaxonomy } from "@utils/getAllTags";
 import { getRidOfHypensToSlug } from "@utils/slug";
@@ -15,10 +16,15 @@ const uniqueSlugsCategories = [
 <Base meta_title="DOVI-LOG | Categories">
   <section class="gird-cols-1 grid">
     <h1 class="mb-8 text-2xl font-bold md:text-3xl">Categories</h1>
-    <ul class="flex flex-wrap gap-3 text-zinc-500 dark:text-zinc-400">
+    <Flex
+      as="ul"
+      wrap="wrap"
+      gap="12px"
+      class="text-zinc-500 dark:text-zinc-400"
+    >
       {
         uniqueSlugsCategories.map((item) => (
-          <li class="mr-4 flex items-center justify-between">
+          <Flex as="li" align="center" justify="space-between" class="mr-4">
             <CategoryIcon />
             <a
               class="text-lg capitalize text-zinc-500 hover:text-zinc-800 dark:text-zinc-400"
@@ -27,9 +33,9 @@ const uniqueSlugsCategories = [
             >
               {getRidOfHypensToSlug(item)}
             </a>
-          </li>
+          </Flex>
         ))
       }
-    </ul>
+    </Flex>
   </section>
 </Base>

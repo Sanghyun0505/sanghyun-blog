@@ -1,0 +1,41 @@
+---
+import type { HTMLTag, Polymorphic } from "astro/types";
+
+type Props<Tag extends HTMLTag> = Polymorphic<{
+  as: Tag;
+  style?: astroHTML.JSX.CSSProperties;
+  direction?: astroHTML.JSX.CSSProperties["flex-direction"];
+  align?: astroHTML.JSX.CSSProperties["align-items"];
+  justify?: astroHTML.JSX.CSSProperties["justify-content"];
+  wrap?: astroHTML.JSX.CSSProperties["flex-wrap"];
+  gap?: astroHTML.JSX.CSSProperties["gap"];
+  flex?: string | number;
+}>;
+
+const {
+  as: Component = "div",
+  direction,
+  align,
+  justify,
+  wrap,
+  gap,
+  flex,
+  ...props
+} = Astro.props;
+---
+
+<Component
+  {...props}
+  style={{
+    ...(props.style || {}),
+    flexDirection: direction ?? props.style?.flexDirection,
+    alignItems: align ?? props.style?.alignItems,
+    justifyContent: justify ?? props.style?.justifyContent,
+    flexWrap: wrap ?? props.style?.flexWrap,
+    gap: gap ?? props.style?.gap,
+    flex: flex ?? props.style?.flex,
+  }}
+  class={`${props.class} flex`}
+>
+  <slot />
+</Component>

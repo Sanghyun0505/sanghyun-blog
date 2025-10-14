@@ -4,6 +4,7 @@ import config from "@config/config.json";
 import { getCollection } from "astro:content";
 import Post from "@components/Post.astro";
 import BlogPageNavigation from "@components/BlogPageNavigation.astro";
+import Flex from "@components/Flex.astro";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -17,7 +18,7 @@ const posts = (await getCollection("blog")).sort(
     {posts?.slice(0, config.site.pageSize).map((item) => <Post {...item} />)}
   </div>
 
-  <div class="mt-12 flex w-full justify-end">
+  <Flex justify="flex-end" class="mt-12 w-full">
     <BlogPageNavigation />
-  </div>
+  </Flex>
 </Base>

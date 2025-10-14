@@ -6,6 +6,7 @@ import FormattedDate from "@components/FormattedDate.astro";
 import CategoryIcon from "@assets/icons/CategoryIcon.astro";
 import { addHypensToSlug } from "@utils/slug";
 import type { CollectionEntry } from "astro:content";
+import Flex from "@components/Flex.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
@@ -39,15 +40,18 @@ const { title, description, heroImage, pubDate, categories, tags } =
         {title}
       </h1>
 
-      <div
-        class="text-text mt-4 flex flex-wrap items-center justify-center text-zinc-800 dark:text-zinc-200"
+      <Flex
+        align="center"
+        justify="center"
+        wrap="wrap"
+        class="text-text mt-4 text-zinc-800 dark:text-zinc-200"
       >
-        <div class="mx-3 mt-2 flex flex-wrap items-center font-medium">
+        <Flex align="center" wrap="wrap" class="mx-3 mt-2 font-medium">
           <CalenderIcon />
           <FormattedDate date={pubDate} />
-        </div>
+        </Flex>
 
-        <div class="mx-3 mt-2 flex flex-wrap items-center font-medium">
+        <Flex align="center" wrap="wrap" class="mx-3 mt-2 font-medium">
           <CategoryIcon />
           {
             categories.slice(0, 1).map((item) => (
@@ -59,8 +63,8 @@ const { title, description, heroImage, pubDate, categories, tags } =
               </a>
             ))
           }
-        </div>
-      </div>
+        </Flex>
+      </Flex>
     </div>
 
     <div class="prose-md prose prose-blue min-w-full md:prose-lg">
